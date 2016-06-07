@@ -70,14 +70,18 @@ class ViewController: UIViewController {
         //定位起点
         CGPathMoveToPoint(path, nil, 0, 0)
         //添加曲线
-        CGPathAddCurveToPoint(path, nil, 50,20, 100, 300, 0, 0) // (path,pointer,x1,y1,x2,y2,x0,y0)
+//        CGPathAddCurveToPoint(path, nil, 50,20, 100, 300, 0, 0) // (path,pointer,x1,y1,x2,y2,x0,y0) 贝塞尔曲线
+        CGPathAddCurveToPoint(path,nil,50.0,275.0,150.0,275.0,70.0,120.0)
+        CGPathAddCurveToPoint(path,nil,150.0,275.0,250.0,275.0,90.0,120.0)
+        CGPathAddCurveToPoint(path,nil,250.0,275.0,350.0,275.0,110.0,120.0)
+        CGPathAddCurveToPoint(path,nil,350.0,275.0,450.0,275.0,130.0,120.0)
         
         let logAnimation = CAKeyframeAnimation(keyPath: "position")
         logAnimation.setValue("logIn", forKey: "name")
         logAnimation.setValue(ballon, forKey: "layer")
         logAnimation.path = path
-        logAnimation.duration = 3.0
-        logAnimation.fillMode = kCAFillModeBackwards
+        logAnimation.duration = 5.0
+        logAnimation.fillMode = kCAFillModeForwards
         logAnimation.removedOnCompletion = false
         ballon.addAnimation(logAnimation, forKey: nil)
     }
